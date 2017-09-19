@@ -1,0 +1,64 @@
+<div class="navigation">
+  <nav class="navbar navbar-toggleable-md navbar-light bg-primary">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+            data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+            aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">SACHIN GHUMNAR</a>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link active" routerLink="#">Home <span class="sr-only">(current)</span></a>
+        <!--<a class="nav-item nav-link" routerLink="/login" routerLinkActive="active">Login</a>-->
+        <!--<a class="nav-item nav-link" routerLink="/signup" routerLinkActive="active">Signup</a>-->
+        <a class="nav-item nav-link" routerLink="/dashboard/users" routerLinkActive="active">Users</a>
+        <span class="btn btn-logout" (click)="profile()"><img class="login-img"
+                                                              src="https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png"></span>
+      </div>
+    </div>
+  </nav>
+  <div class="popover popover-bottom" [class.show]="showPopUp">
+    <div class="navbar-content container">
+      <div class="row">
+        <div class="col-md-5">
+          <img src="https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png" alt="Alternate Text" class="img-responsive"
+               width="120px" height="120px"/>
+          <p class="text-center small">
+            <a href="./3X6zm">Change Photo</a></p>
+        </div>
+        <div class="col-md-7">
+          <span>{{userData.userName}}</span>
+          <p class="text-muted small">
+            {{userData.email}}</p>
+          <div class="divider">
+          </div>
+          <a routerLink="/dashboard/profile" (click)="showPopUp = false" class="btn btn-default btn-xs"><i
+            class="fa fa-user-o" aria-hidden="true"></i> Profile</a>
+          <a href="#" class="btn btn-default btn-xs"><i class="fa fa-address-card-o" aria-hidden="true"></i>
+            Contacts</a>
+          <a routerLink="/dashboard/settings" (click)="showPopUp = false" class="btn btn-default btn-xs"><i
+            class="fa fa-cogs" aria-hidden="true"></i> Settings</a>
+          <a href="#" class="btn btn-default btn-xs"><i class="fa fa-question-circle-o" aria-hidden="true"></i>
+            Help!</a>
+        </div>
+      </div>
+    </div>
+    <div class="navbar-footer">
+      <div class="navbar-footer-content">
+        <div class="row">
+          <div class="col-md-6">
+            <a routerLink="/dashboard/changePassword" (click)="showPopUp = false" class="btn btn-default btn-sm"><i
+              class="fa fa-unlock-alt" aria-hidden="true"></i> Change Passowrd</a>
+          </div>
+          <div class="col-md-6">
+            <a (click)="logout()" class="btn btn-default btn-sm pull-right"><i class="fa fa-power-off"
+                                                                               aria-hidden="true"></i> Sign Out</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <router-outlet></router-outlet>
+</div>

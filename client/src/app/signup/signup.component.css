@@ -1,0 +1,20 @@
+.signup {
+  width: 30%;
+  margin-top: 2%;
+  border: 1px solid white;
+  background-color: white;
+}
+
+.signup form {
+
+  margin-top: 4%;
+}
+
+.signup .btn-right {
+  float: right;
+}
+
+.navbar-brand {
+  font-weight: bold !important;
+  color: white !important;
+}

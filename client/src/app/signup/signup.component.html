@@ -1,0 +1,102 @@
+<div class="navigation">
+  <nav class="navbar navbar-toggleable-md navbar-light bg-primary">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+            data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+            aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">SACHIN GHUMNAR</a>
+  </nav>
+</div>
+<div class="signup container">
+  <form #signupForm="ngForm">
+    <div class="form-group row"
+         [ngClass]="{'has-success': firstName.valid, 'has-danger': firstName.errors && firstName.dirty}">
+      <div class="col-sm-12">
+        <input type="text" class="form-control"
+               [ngClass]="{'form-control-success': firstName.valid, 'form-control-danger': firstName.errors}"
+               id="inputHorizontalSuccess" placeholder="Enter user firstName" [(ngModel)]="userData.firstName"
+               name="firstName" required #firstName="ngModel">
+        <!--<div class="form-control-feedback">Success! You've done it.</div>
+        <small class="form-text text-muted">Example help text that remains unchanged.</small>-->
+      </div>
+    </div>
+    <div class="form-group row"
+         [ngClass]="{'has-success': lastName.valid, 'has-danger': lastName.errors && lastName.dirty}">
+      <div class="col-sm-12">
+        <input type="text" [ngClass]="{'form-control-success': lastName.valid, 'form-control-danger': lastName.errors}"
+               class="form-control" id="inputHorizontalWarning" placeholder="Enter last name"
+               [(ngModel)]="userData.lastName" name="lastName" required #lastName="ngModel">
+        <!--<div class="form-control-feedback">Shucks, check the formatting of that and try again.</div>
+        <small class="form-text text-muted">Example help text that remains unchanged.</small>-->
+      </div>
+    </div>
+    <div class="form-group row" [ngClass]="{'has-success': email.valid, 'has-danger': email.errors && email.dirty}">
+      <div class="col-sm-12">
+        <input type="email" class="form-control"
+               [ngClass]="{'form-control-success': email.valid, 'form-control-danger': email.errors}"
+               id="inputHorizontalWarning" placeholder="Enter email" [(ngModel)]="userData.email" name="email"
+               #email="ngModel" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+        <div class="form-control-feedback" *ngIf="email.errors &&  email.errors.pattern">Email is invalid</div>
+      </div>
+    </div>
+    <div class="form-group row"
+         [ngClass]="{'has-success': uname.valid && !isUserExists, 'has-danger': uname.errors && uname.dirty || isUserExists}">
+      <div class="col-sm-12">
+        <input type="text" class="form-control"
+               [ngClass]="{'form-control-success': uname.valid && !isUserExists, 'form-control-danger': uname.errors || isUserExists}"
+               id="inputHorizontalWarning" placeholder="Enter User Name" [(ngModel)]="userData.username"
+               (blur)="checkUserName(userData.username)" name="uname" #uname="ngModel" required>
+        <div class="form-control-feedback" *ngIf="isUserExists">User name already exists !!!</div>
+      </div>
+    </div>
+    <div class="form-group row" [ngClass]="{'has-success': pwd.valid, 'has-danger': pwd.errors && pwd.dirty}">
+      <div class="col-sm-12">
+        <input type="password" class="form-control"
+               [ngClass]="{'form-control-success': pwd.valid, 'form-control-danger': pwd.errors}"
+               id="inputHorizontalWarning" placeholder="Enter password" [(ngModel)]="userData.password" name="pwd"
+               #pwd="ngModel" required>
+      </div>
+    </div>
+    <div class="form-group row"
+         [ngClass]="{'has-success': cpwd.valid, 'has-danger': (cpwd.errors && cpwd.dirty) || userData.password !== cpassword && cpwd.dirty}">
+      <div class="col-sm-12">
+        <input type="password" class="form-control"
+               [ngClass]="{'form-control-success': cpwd.valid, 'form-control-danger': cpwd.errors}"
+               id="inputHorizontalWarning" placeholder="Enter confirm password" [(ngModel)]="cpassword" name="cpwd"
+               #cpwd="ngModel" required>
+        <div class="form-control-feedback" *ngIf="userData.password !== cpassword && cpwd.dirty">Confirm password don't
+          match
+        </div>
+      </div>
+    </div>
+    <div class="form-group row"
+         [ngClass]="{'has-success': gender.valid && userData.gender !== 'default', 'has-danger': gender.errors && gender.dirty || userData.gender === 'default' && gender.dirty}">
+      <div class="col-sm-12">
+        <select class="form-control" [(ngModel)]="userData.gender" name="gender" #gender="ngModel" required>
+          <option value="default">---Select Gender --</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row" [ngClass]="{'has-success': phone.valid, 'has-danger': phone.errors && phone.dirty}">
+      <div class="col-sm-12">
+        <input type="text" class="form-control"
+               [ngClass]="{'form-control-success': phone.valid, 'form-control-danger': phone.errors}"
+               id="inputHorizontalWarning" placeholder="Enter Phone" [(ngModel)]="userData.phone" name="phone"
+               #phone="ngModel" required pattern="[0-9]+" minlength="10" maxlength="10">
+        <div class="form-control-feedback" *ngIf="phone.errors &&  phone.errors.pattern">Phone number is invalid</div>
+        <!--<div class="form-control-feedback" *ngIf="phone.errors.minlength && !phone.errors.pattern && phone.errors">Phone number should be 10 digit</div>-->
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-12">
+        <span>Already have an account? <a routerLink="/login">Log in</a></span>
+        <button [disabled]="signupForm.invalid || isUserExists" type="button" class="btn btn-success btn-right"
+                (click)="createUser()">Signup
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

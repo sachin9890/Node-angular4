@@ -1,0 +1,9 @@
+.navigation .nav-item {
+  color: white;
+}
+
+.landing-page {
+  background-color: #e9ebee;
+  height: auto;
+  min-height: 100vh;
+}

@@ -1,0 +1,6 @@
+{
+  "database": {
+    "prodURL": "mongodb://sachin:12345@ds145302.mlab.com:45302/sachin721",
+    "localURL": "mongodb://localhost:27017/users"
+  }
+}

@@ -1,0 +1,54 @@
+<div class="navigation">
+  <nav class="navbar navbar-toggleable-md navbar-light bg-primary">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+            data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+            aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">SACHIN GHUMNAR</a>
+  </nav>
+</div>
+<div class="login container">
+  <div class="social-container">
+    <a class="btn btn-block btn-social btn-facebook" href="/user/login/facebook">
+      <i class="fa fa-facebook"></i> Sign in with Facebook
+    </a>
+    <a class="btn btn-block btn-social btn-google-plus">
+      <i class="fa fa-google-plus"></i> Sign in with Google
+    </a>
+  </div>
+  <div class="row">
+    <span>OR</span>
+  </div>
+  <form #loginForm="ngForm">
+    <div class="form-group row " [ngClass]="{'has-success': name.valid, 'has-danger': name.errors && name.dirty}">
+      <!--<label for="inputHorizontalSuccess" class="col-sm-3 col-form-label">User name</label>-->
+      <div class="col-sm-12">
+        <input type="text" class="form-control"
+               [ngClass]="{'form-control-success': name.valid, 'form-control-danger': name.errors && name.dirty}"
+               id="inputHorizontalSuccess" placeholder="Enter user name" [(ngModel)]="userData.username" name="userName"
+               #name="ngModel" required>
+        <!--<div class="form-control-feedback">Success! You've done it.</div>
+        <small class="form-text text-muted">Example help text that remains unchanged.</small>-->
+      </div>
+    </div>
+    <div class="form-group row" [ngClass]="{'has-success': pwd.valid, 'has-danger': pwd.errors && pwd.dirty}">
+      <!--<label for="inputHorizontalWarning" class="col-sm-3 col-form-label">Password</label>-->
+      <div class="col-sm-12">
+        <input type="password" class="form-control"
+               [ngClass]="{'form-control-success': pwd.valid, 'form-control-danger': pwd.errors && pwd.dirty}"
+               id="inputHorizontalWarning" placeholder="Enter password" [(ngModel)]="userData.password" name="pwd"
+               #pwd="ngModel" required>
+        <!--<div class="form-control-feedback">Shucks, check the formatting of that and try again.</div>
+        <small class="form-text text-muted">Example help text that remains unchanged.</small>-->
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-12">
+        <span>Don't have an account? <a routerLink="/signup">Sign up</a></span>
+        <button [disabled]="loginForm.invalid" type="button" class="btn btn-success btn-right" (click)="login()">Login
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

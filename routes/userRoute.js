@@ -8,7 +8,7 @@ module.exports = function (User, express) {
      }));
 
      userRouter.use(bodyParser.json());
-    var multiparty = require('multiparty');
+    //var multiparty = require('multiparty');
     var passport = require('passport');
 
 
